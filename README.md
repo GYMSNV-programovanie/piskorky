@@ -1,2 +1,2 @@
 # piskorky
-Piskorky
+Naprogramujte piskorky 
