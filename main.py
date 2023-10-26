@@ -8,15 +8,7 @@ screen = pygame.display.set_mode((700, 700))
 white = (255, 255, 255)
 black = (0, 0, 0)
 
-# Define a font
-font = pygame.font.Font(None, 36)
 
-# Create a text surface
-text = font.render("Vyhral si", True, black)
-
-# Get the rectangle for the text surface
-text_rect = text.get_rect()
-text_rect.center = (400, 300)
 
 screen.fill("white")
 def siet()->None:
@@ -77,7 +69,6 @@ while running:
             # Riadky a stlpce 
             for i in range(3):
                 if all(item in kriziky for item in [1+i*3,2+i*3,3+i*3]) or all(item in kruzka for item in [1+i*3,2+i*3,3+i*3]):
-                    screen.blit(text, text_rect)
                     pygame.draw.line(screen , "red",(50,150 + i*200),(650,150 +i*200),4)
                     for k in range(10):
                         odpovede.append(k)
