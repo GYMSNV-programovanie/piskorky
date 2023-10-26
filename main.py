@@ -5,6 +5,19 @@ import pygame
 pygame.init()
 screen = pygame.display.set_mode((700, 700))
 
+white = (255, 255, 255)
+black = (0, 0, 0)
+
+# Define a font
+font = pygame.font.Font(None, 36)
+
+# Create a text surface
+text = font.render("Vyhral si", True, black)
+
+# Get the rectangle for the text surface
+text_rect = text.get_rect()
+text_rect.center = (400, 300)
+
 screen.fill("white")
 def siet()->None:
         x1, y1 = 250,50
@@ -37,7 +50,6 @@ while running:
             (x,y) = pygame.mouse.get_pos()
             x= math.floor(x/200)*200
             y= math.floor(y/200)*200  
-            print(y)
 
             
 
@@ -65,14 +77,23 @@ while running:
             # Riadky a stlpce 
             for i in range(3):
                 if all(item in kriziky for item in [1+i*3,2+i*3,3+i*3]) or all(item in kruzka for item in [1+i*3,2+i*3,3+i*3]):
+                    screen.blit(text, text_rect)
                     pygame.draw.line(screen , "red",(50,150 + i*200),(650,150 +i*200),4)
+                    for k in range(10):
+                        odpovede.append(k)
                 elif all(item in kriziky for item in [1 + i,4+ i,7+ i]) or all(item in kruzka for item in [1 + i,4+ i,7+ i]):
                     pygame.draw.line(screen , "red",(150 + i * 200,50),(150 + i* 200,650),4)
+                    for k in range(10):
+                        odpovede.append(k)
             # Diagonály 
             if all(item in kriziky for item in [7,5,3]) or all(item in kruzka for item in [7,5,3]):
                 pygame.draw.line(screen , "red",(50,650),(650,50),4)
+                for k in range(10):
+                    odpovede.append(k)
             elif all(item in kriziky for item in [1,5,9]) or all(item in kruzka for item in [1,5,9]):
                 pygame.draw.line(screen , "red",(50,50),(650,650),4)
+                for k in range(10):
+                    odpovede.append(k)
           
             
         
