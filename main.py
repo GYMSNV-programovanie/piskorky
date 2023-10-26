@@ -62,25 +62,18 @@ while running:
             odpovede = kruzka + kriziky
             odpovede.sort()
 
-           
-            if all(item in kriziky for item in [1,2,3]) or all(item in kruzka for item in [1,2,3]):
-                pygame.draw.line(screen , "red",(50,150),(650,150),4)
-                break
-            elif all(item in kriziky for item in [4,5,6]) or all(item in kruzka for item in [4,5,6]):
-                pygame.draw.line(screen , "red",(50,350),(650,350),4)
-            elif all(item in kriziky for item in [7,8,9]) or all(item in kruzka for item in [7,8,9]):
-                pygame.draw.line(screen , "red",(50,550),(650,550),4)
-            elif all(item in kriziky for item in [7,5,3]) or all(item in kruzka for item in [7,5,3]):
+            # Riadky a stlpce 
+            for i in range(3):
+                if all(item in kriziky for item in [1+i*3,2+i*3,3+i*3]) or all(item in kruzka for item in [1+i*3,2+i*3,3+i*3]):
+                    pygame.draw.line(screen , "red",(50,150 + i*200),(650,150 +i*200),4)
+                elif all(item in kriziky for item in [1 + i,4+ i,7+ i]) or all(item in kruzka for item in [1 + i,4+ i,7+ i]):
+                    pygame.draw.line(screen , "red",(150 + i * 200,50),(150 + i* 200,650),4)
+            # Diagonály 
+            if all(item in kriziky for item in [7,5,3]) or all(item in kruzka for item in [7,5,3]):
                 pygame.draw.line(screen , "red",(50,650),(650,50),4)
             elif all(item in kriziky for item in [1,5,9]) or all(item in kruzka for item in [1,5,9]):
                 pygame.draw.line(screen , "red",(50,50),(650,650),4)
-            elif all(item in kriziky for item in [1,4,7]) or all(item in kruzka for item in [1,4,7]):
-                pygame.draw.line(screen , "red",(150,50),(150,650),4)
-            elif all(item in kriziky for item in [2,5,8]) or all(item in kruzka for item in [2,5,8]):
-                pygame.draw.line(screen , "red",(350,50),(350,650),4)
-            elif all(item in kriziky for item in [3,6,9]) or all(item in kruzka for item in [3,6,9]):
-                pygame.draw.line(screen , "red",(550,50),(550,650),4)
-            
+          
             
         
                         
